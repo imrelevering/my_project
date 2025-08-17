@@ -4,59 +4,41 @@ document.getElementById('hamburger').addEventListener('click', function() {
         });
 
 
-        // Real-time validation feedback
-const form = document.getElementById('contactForm');
-const name = document.getElementById('name');
-const email = document.getElementById('email');
-const message = document.getElementById('message');
-const nameError = document.getElementById('nameError');
-const emailError = document.getElementById('emailError');
-const messageError = document.getElementById('messageError');
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        let valid = true;
 
-name.addEventListener('input', () => {
-    if (name.value.trim() === '') {
-        nameError.textContent = 'Name is required.';
-    } else {
-        nameError.textContent = '';
-    }
-});
+        // Name validation
+        const name = document.getElementById('name');
+        const nameError = document.getElementById('nameError');
+        if (name.value.trim().length < 2) {
+            nameError.textContent = 'Please enter at least 2 characters.';
+            valid = false;
+        } else {
+            nameError.textContent = '';
+        }
 
-email.addEventListener('input', () => {
-    if (email.value.trim() === '') {
-        emailError.textContent = 'Email is required.';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-        emailError.textContent = 'Enter a valid email address.';
-    } else {
-        emailError.textContent = '';
-    }
-});
+        // Email validation
+        const email = document.getElementById('email');
+        const emailError = document.getElementById('emailError');
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email.value.trim())) {
+            emailError.textContent = 'Please enter a valid email address.';
+            valid = false;
+        } else {
+            emailError.textContent = '';
+        }
 
-message.addEventListener('input', () => {
-    if (message.value.trim() === '') {
-        messageError.textContent = 'Message is required.';
-    } else {
-        messageError.textContent = '';
-    }
-});
+        // Message validation
+        const message = document.getElementById('message');
+        const messageError = document.getElementById('messageError');
+        if (message.value.trim().length < 10) {
+            messageError.textContent = 'Message must be at least 10 characters.';
+            valid = false;
+        } else {
+            messageError.textContent = '';
+        }
 
-form.addEventListener('submit', function(e) {
-    let valid = true;
-    if (name.value.trim() === '') {
-        nameError.textContent = 'Name is required.';
-        valid = false;
-    }
-    if (email.value.trim() === '') {
-        emailError.textContent = 'Email is required.';
-        valid = false;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-        emailError.textContent = 'Enter a valid email address.';
-        valid = false;
-    }
-    if (message.value.trim() === '') {
-        messageError.textContent = 'Message is required.';
-        valid = false;
-    }
-    if (!valid) {
-        e.preventDefault();
-    }
-});
+        if (!valid) {
+            e.preventDefault();
+        }
+    });
