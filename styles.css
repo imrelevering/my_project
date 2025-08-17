@@ -83,10 +83,12 @@ body {
 }
 .navLinks {
     background: #555;
+     border-radius: 20px;
     display: flex;
     justify-content: center;
     gap: 16px;
     margin-bottom: 20px;
+    width: min-content;
 }
 .container {
     max-width: 1200px;
