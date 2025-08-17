@@ -1,1 +1,117 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive HTML5</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script2.js" defer></script>
+</head>
+<body>
+    <header>
+        <button id="hamburger" aria-label="Toggle navigation">&#9776;</button>
+        <nav id="navLinks" style="display: block;">
+            <ul>
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Projects">Projects</a></li>
+                <li><a href="#Contact">Contact</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+        <section>
+            <h2 id="Home">Home</h2>
+            <p>This is a responsive HTML5 template with an external CSS file.</p>
+        </section>
+        <section class="about-me">
+           <h2 id="About">About me</h2>
+            <p>This is a about me</p>
+         </section>
+        <section class="skills">
+            <h2>Skills</h2>
+            <ul>
+            <li class="icon-html">HTML</li>
+            <li class="icon-css">CSS</li>
+            <li class="icon-js">JavaScript</li>
+            </ul>
+        </section>
+        <section>
+            
+            <div class="projects-container">
+                <h2  id="Projects">Projects</h2>
+                <div class="project-card">
+                    <h3>Portfolio Website</h3>
+                    <img src="images/portfolio.png" alt="Portfolio Website" class="project-img" />
+                    <p>A personal portfolio website built with HTML, CSS, and JavaScript.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Task Manager App</h3>
+                    <img src="images/task-manager.webp" alt="Task Manager App" class="project-img" />
+                    <p>A simple task manager web application using React.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Weather Dashboard</h3>
+                    <img src="images/weather-dashboard.png" alt="Weather Dashboard" class="project-img" />
+                    <p>A dashboard that displays weather information using a public API.</p>
+                </div>
+            </div>
+            <!-- Lightbox Modal -->
+            <div id="lightbox-modal" class="lightbox-modal" style="display:none;">
+                <span id="lightbox-close" class="lightbox-close">&times;</span>
+                <img id="lightbox-img" class="lightbox-img" src="" alt="Project Image" />
+            </div>
+            <script>
+                // Lightbox functionality
+                document.querySelectorAll('.project-img').forEach(img => {
+                    img.addEventListener('click', function() {
+                        document.getElementById('lightbox-img').src = this.src;
+                        document.getElementById('lightbox-modal').style.display = 'block';
+                    });
+                });
+                document.getElementById('lightbox-close').onclick = function() {
+                    document.getElementById('lightbox-modal').style.display = 'none';
+                };
+                document.getElementById('lightbox-modal').onclick = function(e) {
+                    if (e.target === this) {
+                        this.style.display = 'none';
+                    }
+                };
+            </script>
+        </section>
+        <section><br/><br/></section>
+
+
+        <section class="contact">
+            <h2 id="Contact">Contact</h2>
+             <form id="contactForm" action="#" method="post" novalidate></form>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+            </tr>
+            <tr>
+                <td><label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <span class="error" id="nameError"></span></td>
+                <td><label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error" id="emailError"></span></td>
+                <td><label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <span class="error" id="messageError"></span></td>
+            </tr>
+        </table>
+        <button type="submit">Send</button>           
+        </form>
+
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 My Project</p>
+    </footer>
+</body>
+</html>
