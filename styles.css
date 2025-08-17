@@ -81,6 +81,13 @@ body {
     flex-wrap: wrap;
     gap: 16px;
 }
+.navLinks {
+    background: #555;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
 .container {
     max-width: 1200px;
     margin: 40px auto;
